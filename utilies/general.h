@@ -3,6 +3,14 @@
 #include <iterator>
 #define in :
 
+
+#define __GEN_STL_COMPATIBILITY(ds) \
+    inline size_t Size##ds() const { return ds.size(); } \
+    inline decltype(auto) begin() { return ds.begin(); } \
+    inline decltype(auto) end() { return ds.end(); } \
+    inline decltype(auto) begin() const { return ds.begin(); } \
+    inline decltype(auto) end() const { return ds.end(); }
+
 class range {
 public:
     explicit range(int64_t _end)
