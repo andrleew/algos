@@ -2,15 +2,15 @@
 
 #include <cstring>
 
-const size_t PAGE = 4096;
+const size_t PAGE = 4096 ;
 
-inline void clear_array(void* arr) {
-    memset(arr, 0, PAGE);
+inline void clear_array(std::vector<char>& arr) {
+    std::fill(arr.begin(), arr.end(), 0);
 }
 
-std::vector<size_t> Eratosphen(size_t n) {
+std::vector<size_t> Eratosphen(size_t n, size_t page_count = 1) {
     std::vector<size_t> primes;
-    char block[PAGE];
+    std::vector<char> block(PAGE * page_count, false);
     clear_array(block);
     for (size_t i = 2, k = 0; i <= n; ++i, ++k) {
         if (k < PAGE) {
